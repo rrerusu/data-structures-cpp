@@ -4,3 +4,6 @@
 
 # Files created by compiling C++
 *.o
+
+# vscode files
+/.vscode/**
