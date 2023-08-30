@@ -1,6 +1,11 @@
 #include <cstdlib>
 #include <iostream>
 
+namespace myglobals {
+    int cat;
+    string dog = "bow wow";
+}
+
 const int Cat = 1;
 
 int main() {
