@@ -1,6 +1,10 @@
 #include <cstdlib>
 #include <iostream>
 
+using std::string;
+using std::cout;
+using namespace myglobals;
+
 namespace myglobals {
     int cat;
     std::string dog = "bow wow";
