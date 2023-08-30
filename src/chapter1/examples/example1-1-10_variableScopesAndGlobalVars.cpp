@@ -3,7 +3,7 @@
 
 namespace myglobals {
     int cat;
-    string dog = "bow wow";
+    std::string dog = "bow wow";
 }
 
 const int Cat = 1;
