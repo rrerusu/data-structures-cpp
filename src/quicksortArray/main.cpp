@@ -68,12 +68,33 @@ int middlePartition(int intArr[], int begin, int end) {
     return swapPos;
 }
 
+// Hoare partition style, 3x fewer swaps
+int hoarePartition(int intArr[], int begin, int end) {
+    int pivot = intArr[begin];
+    int i = begin;
+    int j = end;
+
+    while(true) {
+        while(intArr[i] < pivot)
+            i++;
+        while(intArr[j] > pivot)
+            j--;
+
+        if(i >= j)
+            return j;
+        
+        swap(intArr[i], intArr[j]);
+    }
+}
+
 void quicksort(int *myArray, int start, int end) {
     if(start < end) {
         // int pivot = endPartition(myArray, start, end);
         // int pivot = beginPartition(myArray, start, end);
-        int pivot = middlePartition(myArray, start, end);
-        quicksort(myArray, start, pivot - 1);
+        // int pivot = middlePartition(myArray, start, end);
+        int pivot = hoarePartition(myArray, start, end);
+        // quicksort(myArray, start, pivot - 1);
+        quicksort(myArray, start, pivot - 1);               // Modification for Hoare's partition
         quicksort(myArray, pivot + 1, end);
     }
 }
