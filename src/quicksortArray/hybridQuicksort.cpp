@@ -15,8 +15,9 @@ void print(int *_, int size) {
 }
 
 // Insertion sort is good for smaller sizes, will make combo with quicksort and insertion sort
-void insertionSort(int arr[], int begin, int n) {
-    for(int i = 0; i <= n; i++) {
+void insertionSort(int arr[], int begin, int end) {
+    for(int i = 0; i <= end; i++) {
+        print(arr, 20);
         int val = arr[i];
         int j = i;
         while(j > begin && arr[j - 1] > val) {
@@ -24,6 +25,20 @@ void insertionSort(int arr[], int begin, int n) {
             j--;
         }
         arr[j] = val;
+    }
+}
+
+// Selection sort is also good for smaller sizes, comboed with quicksort
+void selectionSort(int arr[], int begin, int end) {
+    for(int i = begin; i < end; i++) {
+        int minIndex = i;
+        for(int j = i + 1; j <= end; j++) {
+            if(arr[j] < arr[minIndex])
+                minIndex = j;
+        }
+
+        if(minIndex != i)
+            swap(arr[minIndex], arr[i]);
     }
 }
 
@@ -42,7 +57,7 @@ int endPartition(int arr[], int begin, int end) {
     return j;
 }
 
-// exciting stuff
+// exciting stuff.  Also, end is inclusive, which is cool
 void hybridQuicksort(int arr[], int begin, int end) {
     // while(begin < end) {
     //     if(end - begin + 1 < 10) {
@@ -63,7 +78,8 @@ void hybridQuicksort(int arr[], int begin, int end) {
     // Else clause of Geeksforgeeks code uses less recursion, this is another way to write it
     if(begin < end) {
         if(end - begin + 1 < 10) {
-            insertionSort(arr, begin, end);
+            // insertionSort(arr, begin, end);
+            selectionSort(arr, begin, end);
             return ;
         } else {
             int pivot = endPartition(arr, begin, end);
@@ -76,7 +92,7 @@ void hybridQuicksort(int arr[], int begin, int end) {
 int main() {
     int intArr[] = {33, 14, 84, 73, 97, 49, 85, 70, 64, 46, 65, 30, 78, 69, 74, 95, 62, 42, 61, 54};
 
-    hybridQuicksort(intArr, 0, 20);
+    hybridQuicksort(intArr, 0, 19);
 
     print(intArr, 20);
 
