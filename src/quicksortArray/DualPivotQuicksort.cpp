@@ -54,11 +54,7 @@ int partition(int arr[], int begin, int end, int *lp) {
         }
         checkIndex++;
     }
-    /* To remove below line, initialize frontSwap as begin 
-       and increment before swapping in frontPivot check (see below) */
     frontSwap--;
-    /* To remove below line, initialize backSwap as end,
-       make backPivot check into do-while, and remove extra backSwap-- after swap (see below) */
     backSwap++;
     swap(arr[begin], arr[frontSwap]);
     swap(arr[end], arr[backSwap]);
