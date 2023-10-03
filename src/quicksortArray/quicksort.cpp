@@ -114,6 +114,8 @@ int hoarePartition(int intArr[], int begin, int end) {
             return j;
         
         swap(intArr[i], intArr[j]);
+
+        // Seems to work with only either condition, don't need both
         if(intArr[j] == pivot)
             i++;
         else if(intArr[i] == pivot)
