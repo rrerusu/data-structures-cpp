@@ -7,3 +7,6 @@
 
 # vscode files
 /.vscode/**
+
+# Extra files
+*.txt
