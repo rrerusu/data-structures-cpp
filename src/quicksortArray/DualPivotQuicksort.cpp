@@ -67,40 +67,11 @@ int partition(int arr[], int begin, int end, int *lp) {
     return backSwap;
 }
 
-int modifyPartition(int arr[], int begin, int end, int *lp) {
-    if(arr[begin] > arr[end])
-        swap(arr[begin], arr[end]);
-    
-    int frontPivot = arr[begin], backPivot = arr[end];
-    int frontSwap = begin, backSwap = end;
-    int checkIndex = begin + 1;
-
-    while(checkIndex <= backSwap) {
-        if(arr[checkIndex] >= backPivot) {
-            do {
-                backSwap--;
-            } while(arr[backSwap] > backPivot && checkIndex < backSwap);
-            swap(arr[checkIndex], arr[backSwap]);
-        }
-        if(arr[checkIndex] < frontPivot) {
-            frontSwap++;
-            swap(arr[checkIndex], arr[frontSwap]);
-        }
-        checkIndex++;
-    }
-    swap(arr[begin], arr[frontSwap]);
-    swap(arr[end], arr[backSwap]);
-
-    *lp = frontSwap;
-    return backSwap;
-}
-
 void dualPivotQuicksort(int arr[], int begin, int end) {
     if(begin < end) {
         // lp = left pivot, rp = right pivot
         int lp, rp;
-        // rp = partition(arr, begin, end, &lp);
-        rp = modifyPartition(arr, begin, end, &lp);
+        rp = partition(arr, begin, end, &lp);
         dualPivotQuicksort(arr, begin, lp - 1);
         dualPivotQuicksort(arr, lp + 1, rp - 1);
         dualPivotQuicksort(arr, rp + 1, end);
@@ -108,7 +79,7 @@ void dualPivotQuicksort(int arr[], int begin, int end) {
 }
 
 int main() {
-    int myArray[] = {4, 3, 6, 5, 2, 8, 0, 9, 1, 7};
+    int myArray[] = {4, 3, 6, 1, 2, 5, 0, 9, 8, 7};
 
     dualPivotQuicksort(myArray, 0, 9);
 
