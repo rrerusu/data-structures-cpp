@@ -87,16 +87,37 @@ int hoarePartition(int intArr[], int begin, int end) {
     // }
 
     // modification that seems to work, will need testing
-    int pivot = intArr[begin];
-    int i = begin, j = end;
+    // int pivot = intArr[begin];
+    // int i = begin, j = end;
 
-    while(i < j) {
+    // while(i < j) {
+    //     while(intArr[i] < pivot)
+    //         i++;
+    //     while(intArr[j] > pivot)
+    //         j--;
+        
+    //     swap(intArr[i], intArr[j]);
+    // }
+
+    // First two don't work when there are duplicate values.  This solves the issue
+    int pivot = intArr[begin];
+    int i = begin;
+    int j = end;
+
+    while(true) {
         while(intArr[i] < pivot)
             i++;
         while(intArr[j] > pivot)
             j--;
+
+        if(i >= j)
+            return j;
         
         swap(intArr[i], intArr[j]);
+        if(intArr[j] == pivot)
+            i++;
+        else if(intArr[i] == pivot)
+            j--;
     }
 
     return j;
@@ -115,7 +136,7 @@ void quicksort(int *myArray, int start, int end) {
 }
 
 int main() {
-    int myArray[] = {4, 3, 6, 5, 2, 8, 7, 9, 1, 0};
+    int myArray[] = {4, 3, 6, 1, 2, 5, 0, 9, 8, 7};
 
     quicksort(myArray, 0, 9);
 
