@@ -17,7 +17,7 @@ void print(int *_, int size) {
 // Insertion sort is good for smaller sizes, will make combo with quicksort and insertion sort
 void insertionSort(int arr[], int begin, int end) {
     for(int i = 0; i <= end; i++) {
-        print(arr, 20);
+        // print(arr, 20);
         int val = arr[i];
         int j = i;
         while(j > begin && arr[j - 1] > val) {
@@ -37,8 +37,9 @@ void selectionSort(int arr[], int begin, int end) {
                 minIndex = j;
         }
 
-        if(minIndex != i)
-            swap(arr[minIndex], arr[i]);
+        // if(minIndex != i)
+        //     swap(arr[minIndex], arr[i]);
+        swap(arr[minIndex], arr[i]);
     }
 }
 

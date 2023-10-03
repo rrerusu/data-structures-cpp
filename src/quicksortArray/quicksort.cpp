@@ -70,21 +70,36 @@ int middlePartition(int intArr[], int begin, int end) {
 
 // Hoare partition style, 3x fewer swaps
 int hoarePartition(int intArr[], int begin, int end) {
-    int pivot = intArr[begin];
-    int i = begin;
-    int j = end;
+    // int pivot = intArr[begin];
+    // int i = begin;
+    // int j = end;
 
-    while(true) {
+    // while(true) {
+    //     while(intArr[i] < pivot)
+    //         i++;
+    //     while(intArr[j] > pivot)
+    //         j--;
+
+    //     if(i >= j)
+    //         return j;
+        
+    //     swap(intArr[i], intArr[j]);
+    // }
+
+    // modification that seems to work, will need testing
+    int pivot = intArr[begin];
+    int i = begin, j = end;
+
+    while(i < j) {
         while(intArr[i] < pivot)
             i++;
         while(intArr[j] > pivot)
             j--;
-
-        if(i >= j)
-            return j;
         
         swap(intArr[i], intArr[j]);
     }
+
+    return j;
 }
 
 void quicksort(int *myArray, int start, int end) {
