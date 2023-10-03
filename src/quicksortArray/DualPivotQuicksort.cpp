@@ -14,7 +14,6 @@ void print(int *_, int size) {
     std::cout << std::endl;
 }
 
-// FIXME: help
 int partition(int arr[], int begin, int end, int *lp) {
     print(arr, 10);
     if(arr[begin] > arr[end])
