@@ -43,7 +43,7 @@ int partition(int arr[], int begin, int end, int *lp) {
         //     }
         // }
         if(arr[checkIndex] >= backPivot) {
-            while(arr[backSwap] > backPivot && checkIndex < backSwap)
+            while(arr[backSwap] >= backPivot && checkIndex < backSwap)
                 backSwap--;
             swap(arr[checkIndex], arr[backSwap]);
             backSwap--;
