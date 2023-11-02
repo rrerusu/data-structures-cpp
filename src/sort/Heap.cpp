@@ -58,6 +58,17 @@ void printHeap(T arr[], int size) {
             std::cout << "\n";
 }
 
+template <typename T>
+void heapsort(T arr[], int size) {
+    for(int i = size / 2 - 1; i >= 0; i--)
+        maxHeapify<int>(arr, size, i);
+    
+    for(int i = size - 1; i > 0; i--) {
+        swap<int>(&arr[0], &arr[i]);
+        maxHeapify(arr, i, 0);
+    }
+}
+
 int main() {
     int myArray[] = {1, 3, 5, 4, 6, 13, 10, 9, 8, 15, 17};
     int size = 11;
@@ -68,6 +79,10 @@ int main() {
 
     std::cout << "Min Heap:\n";
     buildMinHeap<int>(myArray, size);
+    printHeap<int>(myArray, size);
+
+    std::cout << "Heapsort:\n";
+    heapsort<int>(myArray, size);
     printHeap<int>(myArray, size);
 
     return EXIT_SUCCESS;
