@@ -34,6 +34,18 @@ void insertionsort(int arr[], int size) {
     }
 }
 
+void selectionsort(int arr[], int size) {
+    for(int currentIndex = 0; currentIndex < size - 1; currentIndex++) {
+        int minIndex = currentIndex;
+        for(int nextIndex = currentIndex + 1; nextIndex < size; nextIndex++) {
+            if(arr[nextIndex] < arr[minIndex])
+                minIndex = nextIndex;
+        }
+        if(minIndex != currentIndex)
+            swap<int>(&arr[minIndex], &arr[currentIndex]);
+    }
+}
+
 void printArr(int arr[], int size) {
     for(int i = 0; i < size; i++)
         std::cout << arr[i] << " ";
@@ -43,7 +55,7 @@ void printArr(int arr[], int size) {
 int main() {
     int myArray[] = {1, 3, 5, 4, 6, 13, 10, 9, 8, 15, 17};
 
-    insertionsort(myArray, 11);
+    selectionsort(myArray, 11);
 
     printArr(myArray, 11);
 
