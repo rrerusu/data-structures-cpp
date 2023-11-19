@@ -27,7 +27,7 @@ int endPartition(int *intArr, int begin, int end) {
     }
     swap(intArr[end], intArr[swapPos]);
 
-    return pivot;
+    return swapPos;
 }
 
 // Algorithm from endPartition but backwards (could've done middlePartition swap with pivot)
@@ -43,7 +43,7 @@ int beginPartition(int *intArr, int begin, int end) {
     }
 
     swap(intArr[swapPos], intArr[pivot]);
-    return pivot;
+    return swapPos;
 }
 
 /* 
@@ -130,7 +130,7 @@ void quicksort(int *myArray, int start, int end) {
         // int pivot = endPartition(myArray, start, end);
         // int pivot = beginPartition(myArray, start, end);
         // int pivot = middlePartition(myArray, start, end);
-        int pivot = hoarePartition(myArray, start, end);
+        int pivot = endPartition(myArray, start, end);
         // quicksort(myArray, start, pivot - 1);
         quicksort(myArray, start, pivot - 1);               // Modification for Hoare's partition
         quicksort(myArray, pivot + 1, end);
