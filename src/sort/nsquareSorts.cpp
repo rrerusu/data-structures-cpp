@@ -21,6 +21,19 @@ void bubblesort(int arr[], int size) {
     }
 }
 
+void insertionsort(int arr[], int size) {
+    for(int currentIndex = 1; currentIndex < size; currentIndex++) {
+        int key = arr[currentIndex];
+        int leftIndex = currentIndex - 1;
+
+        while(leftIndex >= 0 && arr[leftIndex] > key) {
+            arr[leftIndex + 1] = arr[leftIndex];
+            leftIndex--;
+        }
+        arr[leftIndex + 1] = key;
+    }
+}
+
 void printArr(int arr[], int size) {
     for(int i = 0; i < size; i++)
         std::cout << arr[i] << " ";
@@ -30,7 +43,7 @@ void printArr(int arr[], int size) {
 int main() {
     int myArray[] = {1, 3, 5, 4, 6, 13, 10, 9, 8, 15, 17};
 
-    bubblesort(myArray, 11);
+    insertionsort(myArray, 11);
 
     printArr(myArray, 11);
 
