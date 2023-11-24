@@ -1,4 +1,5 @@
 #include <iostream>
+#include <chrono>
 
 void merge(int array[], int const left, int const mid, int const right) {
     // Subarrays
@@ -63,9 +64,13 @@ void printArr(int arr[], int size) {
 int main() {
     int intArr[] = {33, 14, 84, 73, 97, 49, 85, 70, 64, 46, 65, 30, 78, 69, 74, 95, 62, 42, 61, 54};
 
+    auto start = std::chrono::high_resolution_clock::now();
     mergesort(intArr, 0, 19);
+    auto end = std::chrono::high_resolution_clock::now();
+    auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
 
     printArr(intArr, 20);
+    std::cout << "\nElapsed time: " << duration.count() << std::endl;
 
     return EXIT_SUCCESS;
 }

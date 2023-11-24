@@ -1,4 +1,5 @@
 #include <iostream>
+#include <chrono>
 
 void swap(int &a, int &b) {
     int temp = a;
@@ -93,9 +94,13 @@ void hybridQuicksort(int arr[], int begin, int end) {
 int main() {
     int intArr[] = {33, 14, 84, 73, 97, 49, 85, 70, 64, 46, 65, 30, 78, 69, 74, 95, 62, 42, 61, 54};
 
+    auto begin = std::chrono::high_resolution_clock::now();
     hybridQuicksort(intArr, 0, 19);
+    auto end = std::chrono::high_resolution_clock::now();
+    auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - begin);
 
     print(intArr, 20);
+    std::cout << "\nElapsed time: " << duration.count() << std::endl;
 
     return EXIT_SUCCESS;
 }

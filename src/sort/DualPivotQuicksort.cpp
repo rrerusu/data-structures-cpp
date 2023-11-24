@@ -1,4 +1,5 @@
 #include <iostream>
+#include <chrono>
 
 void swap(int &a, int &b) {
     int temp = a;
@@ -75,11 +76,16 @@ void dualPivotQuicksort(int arr[], int begin, int end) {
 }
 
 int main() {
-    int myArray[] = {4, 3, 6, 1, 2, 5, 0, 9, 8, 7};
+    int myArray[] = {33, 14, 84, 73, 97, 49, 85, 70, 64, 46, 65, 30, 78, 69, 74, 95, 62, 42, 61, 54};
 
-    dualPivotQuicksort(myArray, 0, 9);
+    auto begin = std::chrono::high_resolution_clock::now();
+    dualPivotQuicksort(myArray, 0, 19);
+    auto end = std::chrono::high_resolution_clock::now();
+    auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - begin);
 
-    print(myArray, 10);
+    print(myArray, 20);
+
+    std::cout << "\nElapsed time: " << duration.count() << std::endl;
 
     return EXIT_SUCCESS;
 }
