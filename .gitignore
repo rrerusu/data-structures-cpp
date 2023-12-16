@@ -11,5 +11,6 @@
 # Extra files
 *.txt
 
-# Funny Files
-src/sort/QuicksortInArabic.cpp
+# Funny/Incomplete
+src/sort/Quicksort/Arabic/*
+src/sort/Quicksort/MultithreadedQuicksort/*

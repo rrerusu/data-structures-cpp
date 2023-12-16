@@ -139,14 +139,21 @@ void quicksort(int *myArray, int start, int end) {
 }
 
 int main() {
-    int myArray[] = {33, 14, 84, 73, 97, 49, 85, 70, 64, 46, 65, 30, 78, 69, 74, 95, 62, 42, 61, 54};
+    // int myArray[] = {33, 14, 84, 73, 97, 49, 85, 70, 64, 46, 65, 30, 78, 69, 74, 95, 62, 42, 61, 54};
+    // int size = 20;
+    int size = 1000000;
+    int * myArray = new int[size];
+    for(int i = 0; i < size; i++)
+        myArray[i] = std::rand() % (1000000 - 100000 + 1) + 100000;
 
     auto begin = std::chrono::high_resolution_clock::now();
-    quicksort(myArray, 0, 19);
+    // quicksort(myArray, 0, 19);
+    quicksort(myArray, 0, size - 1);
     auto end = std::chrono::high_resolution_clock::now();
     auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - begin);
 
-    print(myArray, 20);
+    // print(myArray, 20);
+    // print(myArray, size);
     std::cout << "\nElapsed time: " << duration.count() << std::endl;
 
     return EXIT_SUCCESS;
