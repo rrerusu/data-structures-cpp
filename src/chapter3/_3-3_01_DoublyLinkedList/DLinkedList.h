@@ -37,6 +37,7 @@ class DLinkedList {
         void popFront();
         void popBack();
         std::string toString();
+        void reverse();
     private:
         DNode<Elem> * head;
         DNode<Elem> * tail;
@@ -109,4 +110,19 @@ std::string DLinkedList<Elem>::toString() {
     }
     output += "tail";
     return output;
+}
+
+template <typename Elem>
+void DLinkedList<Elem>::reverse() {
+    DLinkedList<Elem> T;
+    while(!this->empty()) {
+        Elem val = this->front();
+        this->popFront();
+        T.pushFront(val);
+    }
+    while(!T.empty()) {
+        Elem val = T.front();
+        T.popFront();
+        this->pushBack(val);
+    }
 }

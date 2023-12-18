@@ -9,6 +9,8 @@ int main() {
     myList.pushBack(6);
 
     std::cout << myList.toString();
+    myList.reverse();
+    std::cout << std::endl << "Reversed: " << myList.toString();
 
     return EXIT_SUCCESS;
 }
