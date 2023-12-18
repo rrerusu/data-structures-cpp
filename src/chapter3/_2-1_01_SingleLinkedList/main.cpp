@@ -2,10 +2,10 @@
 
 int main() {
     SingleLinkedList<std::string> a;
-    a.addFront("MSP");
+    a.push("MSP");
 
     SingleLinkedList<int> b;
-    b.addFront(13);
+    b.push(13);
 
     return EXIT_SUCCESS;
 }
