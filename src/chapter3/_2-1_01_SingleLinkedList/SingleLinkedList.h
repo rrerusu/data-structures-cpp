@@ -21,8 +21,8 @@ class SingleLinkedList {
         ~SingleLinkedList();
         bool empty() const { return head == NULL; }
         const E & front() const { return head->elem; }
-        void addFront(const E & e);
-        void removeFront();
+        void push(const E & e);
+        void pop();
 };
 
 template <typename E>
@@ -32,7 +32,7 @@ SingleLinkedList<E>::~SingleLinkedList() {
 }
 
 template <typename E>
-void SingleLinkedList<E>::addFront(const E & e) {
+void SingleLinkedList<E>::push(const E & e) {
     SNode<E> * v = new SNode<E>();
     v->elem = e;
     v->next = head;
@@ -40,7 +40,7 @@ void SingleLinkedList<E>::addFront(const E & e) {
 }
 
 template <typename E>
-void SingleLinkedList<E>::removeFront() {
+void SingleLinkedList<E>::pop() {
     SNode<E> * old = head;
     head = old->next;
     delete old;
