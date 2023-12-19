@@ -28,7 +28,7 @@ class SingleLinkedList {
 template <typename E>
 SingleLinkedList<E>::~SingleLinkedList() {
     while(!empty())
-        removeFront();
+        pop();
 }
 
 template <typename E>
