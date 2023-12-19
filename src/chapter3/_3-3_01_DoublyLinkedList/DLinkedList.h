@@ -8,8 +8,18 @@ template <class> class DLinkedList;
 template <typename Elem>
 class DNode {
     public:
+        template <typename T = Elem, typename std::enable_if_t<std::is_integral_v<T>, bool> = true>
+        DNode(T val = 0) : elem(val), prev(nullptr), next(nullptr) {}
         DNode(Elem val = NULL) : elem(val), prev(nullptr), next(nullptr) {}
-        std::string toString();
+        template <typename T = Elem, typename std::enable_if_t<std::is_integral_v<T>, bool> = true>
+        std::string toString() {
+            return std::to_string(elem);
+        }
+        std::string toString() {
+            std::stringstream ss;
+            ss << elem;
+            return ss.str();
+        }
     private:
         Elem elem;
         DNode<Elem> * prev;
@@ -17,12 +27,21 @@ class DNode {
         friend class DLinkedList<Elem>;
 };
 
-template <typename Elem>
-std::string DNode<Elem>::toString() {
-    std::stringstream ss;
-    ss << this->elem;
-    return ss.str();
-}
+template <>
+class DNode<std::string> {
+    public:
+        DNode(std::string val = "") : elem(val), prev(nullptr), next(nullptr) {}
+        std::string toString() {
+            std::stringstream ss;
+            ss << elem;
+            return ss.str();
+        }
+    private:
+        std::string elem;
+        DNode<std::string> * prev;
+        DNode<std::string> * next;
+        friend class DLinkedList<std::string>;
+};
 
 template <typename Elem>
 class DLinkedList {
